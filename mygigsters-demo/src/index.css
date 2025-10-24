@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global tweaks */
+:root { color-scheme: light; }
+* { outline-color: #1e40af; }
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  /* Avoid @apply utilities here; use plain CSS */
+  body { background: transparent; color: #27272a; }
+  :root {
+    /* Theme tokens */
+    --brand: 37 99% 53%; /* blue-500ish */
+    --card-bg: 0 0% 100%;
+    --ring: 221 83% 53%;
+  }
+}
+
+@layer components {
+  /* Buttons - pure CSS (no @apply) */
+  .btn, .btn-outline, .btn-ghost, .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* gap-2 */
+    border-radius: 0.75rem; /* rounded-xl */
+    padding: 0.5rem 0.875rem; /* py-2 px-3.5 */
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+    font-weight: 500; /* font-medium */
+    transition: background-color 150ms, color 150ms, border-color 150ms, box-shadow 150ms;
+    outline: none;
+  }
+
+  .btn-primary { background-color: #2563eb; color: #fff; }
+  .btn-primary:hover { background-color: #1d4ed8; }
+  .btn-primary:focus-visible { box-shadow: 0 0 0 2px rgba(37,99,235,0.65); }
+
+  .btn-outline { border: 1px solid #e4e4e7; background: #fff; color: #27272a; }
+  .btn-outline:hover { background: #fafafa; }
+  .btn-outline:focus-visible { box-shadow: 0 0 0 2px rgba(24,24,27,0.15); }
+
+  .btn-ghost { color: #3f3f46; background: transparent; }
+  .btn-ghost:hover { background: #fafafa; }
+
+  /* Small button size */
+  .btn-sm { padding: 0.375rem 0.625rem; font-size: 0.8125rem; line-height: 1.125rem; }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem; /* py-1 px-3 */
+    font-size: 0.75rem; /* text-xs */
+    line-height: 1rem;
+    font-weight: 500;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  /* Inputs */
+.input { width: 100%; border-radius: 0.75rem; padding: 0.5rem 0.75rem; font-size: 0.875rem; line-height: 1.25rem; border: 1px solid #e4e4e7; background: #fff; }
+.input::placeholder { color: #a1a1aa; }
+.input:focus-visible { outline: none; box-shadow: 0 0 0 2px rgba(37,99,235,0.55); }
+/* ensure no overflow and consistent box model */
+.input { display: block; box-sizing: border-box; }
+
+  .select { border-radius: 0.75rem; padding: 0.5rem 0.625rem; font-size: 0.875rem; line-height: 1.25rem; border: 1px solid #e4e4e7; background: #fff; }
+  .select:focus-visible { outline: none; box-shadow: 0 0 0 2px rgba(37,99,235,0.55); }
+
+  /* Tables */
+  .table { width: 100%; text-align: left; font-size: 0.875rem; line-height: 1.25rem; }
+  .table thead th { padding: 0.5rem; font-weight: 500; color: #71717a; }
+  .table tbody tr { border-top: 1px solid #e5e7eb; }
+.table tbody tr:nth-child(odd) { background: rgba(250,250,250,0.7); }
+}
+
+/* ---- Auth page layout helpers (pure CSS, no Tailwind deps) ---- */
+.auth-shell { min-height: 90vh; padding: 16px; display: grid; place-items: center; }
+.auth-container { width: 100%; max-width: 420px; margin: 0 auto; }
+.auth-divider { display: flex; align-items: center; gap: 12px; color: #6b7280; font-size: 12px; }
+.auth-divider::before, .auth-divider::after { content: ""; height: 1px; flex: 1; background: #e5e7eb; }
+.auth-grid-2 { display: grid; grid-template-columns: 1fr; gap: 8px; }
+@media (min-width: 640px) { .auth-grid-2 { grid-template-columns: 1fr 1fr; } }
+.btn-mdw { width: 10rem; }
+@media (max-width: 480px) { .btn-mdw { width: 100%; } }
+.auth-group { border: 1px solid #e5e7eb; background: rgba(249,250,251,0.7); border-radius: 12px; padding: 16px; }
+.seg-toggle { display: flex; border-radius: 9999px; background: #f4f4f5; padding: 2px; }
+.seg-toggle button { flex: 1; border-radius: 9999px; padding: 6px 12px; font-size: 14px; color: #52525b; }
+.seg-toggle button:hover { color: #27272a; }
+.seg-toggle button.active { background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.06); color: #111827; }
+
+/* Input with leading icon helper */
+.input-icon { position: relative; }
+.input-icon > .icon { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: #a1a1aa; pointer-events: none; }
+.input-icon > .input { padding-left: 2.5rem; }
+
+/* Auth footer size */
+.auth-footer { font-size: 11px; color: #6b7280; text-align: center; }
+.brand-logo { display: block; margin-left: auto; margin-right: auto; height: 28px; width: auto; max-width: 180px; object-fit: contain; }
+
+/* ---- Worker pages helpers ---- */
+.page-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+.page-title { font-size: 20px; font-weight: 600; }
+.muted { color: #6b7280; font-size: 13px; }
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.kpi { display: flex; align-items: center; gap: 12px; }
+.kpi .icon { width: 34px; height: 34px; border-radius: 9999px; display: grid; place-items: center; background: #eff6ff; color: #2563eb; }
+.kpi .value { font-size: 20px; font-weight: 600; }
+.kpi .label { font-size: 12px; color: #6b7280; }
+
+.table-hover tbody tr:hover { background: #f8fafc; }
+
+/***** Simple scrollbar *****/
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 9999px; }
+*::-webkit-scrollbar-thumb:hover { background: #d1d5db; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+}

@@ -1,0 +1,7 @@
+[
+  { "date": "2025-08-28", "type": "order", "onTime": true,  "rating": 5,   "distanceKm": 6,  "incidents": 0 },
+  { "date": "2025-08-27", "type": "order", "onTime": true,  "rating": 4.9, "distanceKm": 3,  "incidents": 0 },
+  { "date": "2025-08-26", "type": "shift", "onTime": true,  "rating": 4.8, "incidents": 0 },
+  { "date": "2025-08-25", "type": "delivery", "onTime": true, "rating": 5, "distanceKm": 12, "incidents": 0 },
+  { "date": "2025-08-24", "type": "order", "onTime": false, "rating": 4.5, "distanceKm": 4, "incidents": 0 }
+]
